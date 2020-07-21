@@ -43,7 +43,12 @@ module.exports.validStrings = {
     "[GC:G0 G54 G17 G21 G90 G94 M5 M9 T0 F0 S0]",
     "[GC:G0 G58 G17 G20 G91 G94 M5 M7 M9 T4 F100 S12000]",
     "[G0 G54 G17 G21 G90 G94 M0 M5 M9 T0 F60 S12000]",        // grbl 10
-    "[G0 G54 G17 G21 G90 G94 M0 M5 M9 P2 T0 F0 S0]"
+    "[G0 G54 G17 G21 G90 G94 M0 M5 M9 P2 T0 F0 S0]",
+    "[G0 G55 G17 G21 G90 G94 M0 M5 M9 P2 T0 F0 S0]",
+    "[G0 G56 G17 G21 G90 G94 M0 M5 M9 P2 T0 F0 S0]",
+    "[G0 G57 G17 G21 G90 G94 M0 M5 M9 P2 T0 F0 S0]",
+    "[G0 G58 G17 G21 G90 G94 M0 M5 M9 P2 T0 F0 S0]",
+    "[G0 G59 G17 G21 G90 G94 M0 M5 M9 P2 T0 F0 S0]"
   ],
   helpMessage: [ "[HLP:$$ $# $G $I $N $x=val $Nx=line $J=line $SLP $C $X $H ~ ! ? ctrl-x]" ],
   buildVersion: [
@@ -56,8 +61,15 @@ module.exports.validStrings = {
   success: [ "ok" ],
   gcodeSystem: [
     "[G54:0.000,0.000,306.351]",
+    "[G55:1.000,0.000,306.351]",
+    "[G56:2.000,0.000,306.351]",
+    "[G57:3.000,0.000,306.351]",
+    "[G58:4.000,0.000,306.351]",
+    "[G59:5.000,0.000,306.351]",
     "[TLO:120.000]",
-    "[G28:0.000,-10.225,0.000]"
+    "[G28:0.000,-10.225,0.000]",
+    "[G30:-3.010,-10.225,0.000]",
+    "[G92:-92.010,-0.225,1.110]",
   ],
   probeResult: [
     "[PRB:0.000,0.000,1.492:1]",

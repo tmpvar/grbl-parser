@@ -235,7 +235,7 @@ describe('Extractor', function() {
         data: {
           codes: [
             { code: "G0", name: "Movement", description: "The last movement command" },
-            { code: "G54", name: "WCS", description: "Default Work Coordinate System" },
+            { code: "G54", name: "WCS", description: "Work Coordinate System #1 (Default)" },
             { code: "G17", name: "Plane", description: "X Y (default)" },
             { code: "G21", name: "Units", description: "Current units" },
             { code: "G90", name: "Distance Mode", description: "Absolute distance mode" },
@@ -261,7 +261,7 @@ describe('Extractor', function() {
         data: {
           codes: [
             { code: "G0", name: "Movement", description: "The last movement command" },
-            { code: "G54", name: "WCS", description: "Default Work Coordinate System" },
+            { code: "G54", name: "WCS", description: "Work Coordinate System #1 (Default)" },
             { code: "G17", name: "Plane", description: "X Y (default)" },
             { code: "G21", name: "Units", description: "Current units" },
             { code: "G90", name: "Distance Mode", description: "Absolute distance mode" },
@@ -288,7 +288,147 @@ describe('Extractor', function() {
         data: {
           codes: [
             { code: "G0", name: "Movement", description: "The last movement command" },
-            { code: "G54", name: "WCS", description: "Default Work Coordinate System" },
+            { code: "G54", name: "WCS", description: "Work Coordinate System #1 (Default)" },
+            { code: "G17", name: "Plane", description: "X Y (default)" },
+            { code: "G21", name: "Units", description: "Current units" },
+            { code: "G90", name: "Distance Mode", description: "Absolute distance mode" },
+            { code: "G94", name: "Feed Rate Mode", description: "Units per minute mode" },
+            { code: "M0", name: "Suspended", description: "Machine is currently suspended" },
+            { code: "M5", name: "Spindle", description: "Spindle stopped" },
+            { code: "M9", name: "Coolant", description: "Coolant stopped" },
+            { code: "P2", name: "Unknown", description: "Unknown gcode state" },
+            { code: "T", name: "Tool", description: "The current tool", value: 0 },
+            { code: "F", name: "Feed rate", description: "The last feed command", value: 0 },
+            { code: "S", name: "RPM", description: "The current spindle speed command", value: 0 },
+          ]
+        },
+        input: string
+      }
+
+      var report = extractor.gcodeStateReport(string)
+      expect(report).to.deep.equal(mockedReport)
+    })
+
+    it('should return a correctly formatted report object that has an unknown code', function() {
+      var string = validStrings.gcodeState[4] //  [G0 G55 G17 G21 G90 G94 M0 M5 M9 P2 T0 F0 S0]
+      var mockedReport = {
+        type: "gcodeState",
+        data: {
+          codes: [
+            { code: "G0", name: "Movement", description: "The last movement command" },
+            { code: "G55", name: "WCS", description: "Work Coordinate System #2" },
+            { code: "G17", name: "Plane", description: "X Y (default)" },
+            { code: "G21", name: "Units", description: "Current units" },
+            { code: "G90", name: "Distance Mode", description: "Absolute distance mode" },
+            { code: "G94", name: "Feed Rate Mode", description: "Units per minute mode" },
+            { code: "M0", name: "Suspended", description: "Machine is currently suspended" },
+            { code: "M5", name: "Spindle", description: "Spindle stopped" },
+            { code: "M9", name: "Coolant", description: "Coolant stopped" },
+            { code: "P2", name: "Unknown", description: "Unknown gcode state" },
+            { code: "T", name: "Tool", description: "The current tool", value: 0 },
+            { code: "F", name: "Feed rate", description: "The last feed command", value: 0 },
+            { code: "S", name: "RPM", description: "The current spindle speed command", value: 0 },
+          ]
+        },
+        input: string
+      }
+
+      var report = extractor.gcodeStateReport(string)
+      expect(report).to.deep.equal(mockedReport)
+    })
+
+    it('should return a correctly formatted report object that has an unknown code', function() {
+      var string = validStrings.gcodeState[5] //  [G0 G56 G17 G21 G90 G94 M0 M5 M9 P2 T0 F0 S0]
+      var mockedReport = {
+        type: "gcodeState",
+        data: {
+          codes: [
+            { code: "G0", name: "Movement", description: "The last movement command" },
+            { code: "G56", name: "WCS", description: "Work Coordinate System #3" },
+            { code: "G17", name: "Plane", description: "X Y (default)" },
+            { code: "G21", name: "Units", description: "Current units" },
+            { code: "G90", name: "Distance Mode", description: "Absolute distance mode" },
+            { code: "G94", name: "Feed Rate Mode", description: "Units per minute mode" },
+            { code: "M0", name: "Suspended", description: "Machine is currently suspended" },
+            { code: "M5", name: "Spindle", description: "Spindle stopped" },
+            { code: "M9", name: "Coolant", description: "Coolant stopped" },
+            { code: "P2", name: "Unknown", description: "Unknown gcode state" },
+            { code: "T", name: "Tool", description: "The current tool", value: 0 },
+            { code: "F", name: "Feed rate", description: "The last feed command", value: 0 },
+            { code: "S", name: "RPM", description: "The current spindle speed command", value: 0 },
+          ]
+        },
+        input: string
+      }
+
+      var report = extractor.gcodeStateReport(string)
+      expect(report).to.deep.equal(mockedReport)
+    })
+
+    it('should return a correctly formatted report object that has an unknown code', function() {
+      var string = validStrings.gcodeState[6] //  [G0 G57 G17 G21 G90 G94 M0 M5 M9 P2 T0 F0 S0]
+      var mockedReport = {
+        type: "gcodeState",
+        data: {
+          codes: [
+            { code: "G0", name: "Movement", description: "The last movement command" },
+            { code: "G57", name: "WCS", description: "Work Coordinate System #4" },
+            { code: "G17", name: "Plane", description: "X Y (default)" },
+            { code: "G21", name: "Units", description: "Current units" },
+            { code: "G90", name: "Distance Mode", description: "Absolute distance mode" },
+            { code: "G94", name: "Feed Rate Mode", description: "Units per minute mode" },
+            { code: "M0", name: "Suspended", description: "Machine is currently suspended" },
+            { code: "M5", name: "Spindle", description: "Spindle stopped" },
+            { code: "M9", name: "Coolant", description: "Coolant stopped" },
+            { code: "P2", name: "Unknown", description: "Unknown gcode state" },
+            { code: "T", name: "Tool", description: "The current tool", value: 0 },
+            { code: "F", name: "Feed rate", description: "The last feed command", value: 0 },
+            { code: "S", name: "RPM", description: "The current spindle speed command", value: 0 },
+          ]
+        },
+        input: string
+      }
+
+      var report = extractor.gcodeStateReport(string)
+      expect(report).to.deep.equal(mockedReport)
+    })
+
+    it('should return a correctly formatted report object that has an unknown code', function() {
+      var string = validStrings.gcodeState[7] //  [G0 G58 G17 G21 G90 G94 M0 M5 M9 P2 T0 F0 S0]
+      var mockedReport = {
+        type: "gcodeState",
+        data: {
+          codes: [
+            { code: "G0", name: "Movement", description: "The last movement command" },
+            { code: "G58", name: "WCS", description: "Work Coordinate System #5" },
+            { code: "G17", name: "Plane", description: "X Y (default)" },
+            { code: "G21", name: "Units", description: "Current units" },
+            { code: "G90", name: "Distance Mode", description: "Absolute distance mode" },
+            { code: "G94", name: "Feed Rate Mode", description: "Units per minute mode" },
+            { code: "M0", name: "Suspended", description: "Machine is currently suspended" },
+            { code: "M5", name: "Spindle", description: "Spindle stopped" },
+            { code: "M9", name: "Coolant", description: "Coolant stopped" },
+            { code: "P2", name: "Unknown", description: "Unknown gcode state" },
+            { code: "T", name: "Tool", description: "The current tool", value: 0 },
+            { code: "F", name: "Feed rate", description: "The last feed command", value: 0 },
+            { code: "S", name: "RPM", description: "The current spindle speed command", value: 0 },
+          ]
+        },
+        input: string
+      }
+
+      var report = extractor.gcodeStateReport(string)
+      expect(report).to.deep.equal(mockedReport)
+    })
+
+    it('should return a correctly formatted report object that has an unknown code', function() {
+      var string = validStrings.gcodeState[8] //  [G0 G59 G17 G21 G90 G94 M0 M5 M9 P2 T0 F0 S0]
+      var mockedReport = {
+        type: "gcodeState",
+        data: {
+          codes: [
+            { code: "G0", name: "Movement", description: "The last movement command" },
+            { code: "G59", name: "WCS", description: "Work Coordinate System #6" },
             { code: "G17", name: "Plane", description: "X Y (default)" },
             { code: "G21", name: "Units", description: "Current units" },
             { code: "G90", name: "Distance Mode", description: "Absolute distance mode" },
@@ -361,9 +501,114 @@ describe('Extractor', function() {
         data: {
           code: "G54",
           name: "WCS",
-          description: "Default Work Coordinate System",
+          description: "Work Coordinate System #1 (Default)",
           coordinates: {
             x: 0,
+            y: 0,
+            z: 306.351,
+          },
+        },
+        input: string,
+      };
+
+      var report = extractor.gcodeSystemReport(string)
+      expect(report).to.deep.equal(mockedReport)
+    })
+
+    it('should return a correctly formatted report object', function() {
+      var string = validStrings.gcodeSystem[1] // [G55:1.000,0.000,306.351]
+      var mockedReport = {
+        type: "gcodeSystem",
+        data: {
+          code: "G55",
+          name: "WCS",
+          description: "Work Coordinate System #2",
+          coordinates: {
+            x: 1,
+            y: 0,
+            z: 306.351,
+          },
+        },
+        input: string,
+      };
+
+      var report = extractor.gcodeSystemReport(string)
+      expect(report).to.deep.equal(mockedReport)
+    })
+
+    it('should return a correctly formatted report object', function() {
+      var string = validStrings.gcodeSystem[2] // [G56:2.000,0.000,306.351]
+      var mockedReport = {
+        type: "gcodeSystem",
+        data: {
+          code: "G56",
+          name: "WCS",
+          description: "Work Coordinate System #3",
+          coordinates: {
+            x: 2,
+            y: 0,
+            z: 306.351,
+          },
+        },
+        input: string,
+      };
+
+      var report = extractor.gcodeSystemReport(string)
+      expect(report).to.deep.equal(mockedReport)
+    })
+
+    it('should return a correctly formatted report object', function() {
+      var string = validStrings.gcodeSystem[3] // [G57:3.000,0.000,306.351]
+      var mockedReport = {
+        type: "gcodeSystem",
+        data: {
+          code: "G57",
+          name: "WCS",
+          description: "Work Coordinate System #4",
+          coordinates: {
+            x: 3,
+            y: 0,
+            z: 306.351,
+          },
+        },
+        input: string,
+      };
+
+      var report = extractor.gcodeSystemReport(string)
+      expect(report).to.deep.equal(mockedReport)
+    })
+
+    it('should return a correctly formatted report object', function() {
+      var string = validStrings.gcodeSystem[4] // [G58:4.000,0.000,306.351]
+      var mockedReport = {
+        type: "gcodeSystem",
+        data: {
+          code: "G58",
+          name: "WCS",
+          description: "Work Coordinate System #5",
+          coordinates: {
+            x: 4,
+            y: 0,
+            z: 306.351,
+          },
+        },
+        input: string,
+      };
+
+      var report = extractor.gcodeSystemReport(string)
+      expect(report).to.deep.equal(mockedReport)
+    })
+
+    it('should return a correctly formatted report object', function() {
+      var string = validStrings.gcodeSystem[5] // [G59:4.000,0.000,306.351]
+      var mockedReport = {
+        type: "gcodeSystem",
+        data: {
+          code: "G59",
+          name: "WCS",
+          description: "Work Coordinate System #6",
+          coordinates: {
+            x: 5,
             y: 0,
             z: 306.351
           }
@@ -376,7 +621,7 @@ describe('Extractor', function() {
     })
 
     it('should return a correctly formatted report object', function() {
-      var string = validStrings.gcodeSystem[1] // [TLO:0.000]
+      var string = validStrings.gcodeSystem[6] // [TLO:0.000]
       var mockedReport = {
         type: "gcodeSystem",
         data: {

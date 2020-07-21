@@ -5,11 +5,6 @@
       "name": "Movement",
       "description": "The last movement command"
     },
-    "G54": {
-      "code": "G54",
-      "name": "WCS",
-      "description": "Default Work Coordinate System"
-    },
     "G17": {
       "code": "G17",
       "name": "Plane",
@@ -25,10 +20,50 @@
       "name": "Predefined Position",
       "description": "Go to Predefined Position"
     },
+    "G30": {
+      "code": "G30",
+      "name": "Predefined Position",
+      "description": "Go to Predefined Position"
+    },
+    "G54": {
+      "code": "G54",
+      "name": "WCS",
+      "description": "Work Coordinate System #1 (Default)"
+    },
+    "G55": {
+      "code": "G55",
+      "name": "WCS",
+      "description": "Work Coordinate System #2"
+    },
+    "G56": {
+      "code": "G56",
+      "name": "WCS",
+      "description": "Work Coordinate System #3"
+    },
+    "G57": {
+      "code": "G57",
+      "name": "WCS",
+      "description": "Work Coordinate System #4"
+    },
+    "G58": {
+      "code": "G58",
+      "name": "WCS",
+      "description": "Work Coordinate System #5"
+    },
+    "G59": {
+      "code": "G59",
+      "name": "WCS",
+      "description": "Work Coordinate System #6"
+    },
     "G90": {
       "code": "G90",
       "name": "Distance Mode",
       "description": "Absolute distance mode"
+    },
+    "G92": {
+      "code": "G92",
+      "name": "Coordinate System Offset",
+      "description": "Coordinate System Offset"
     },
     "G94": {
       "code": "G94",
